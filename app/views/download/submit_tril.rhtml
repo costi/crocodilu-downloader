@@ -1,0 +1,10 @@
+<h2>Get'em!</h2>
+><%=image_tag 'crocodile-hunter.jpg'%>	  
+<%-form_tag({:action => 'submit_tril'}, {:method=> :get}) do -%>
+    <p>Trilulilu url: <%=text_field 'file', 'url', :size => 50 %>
+    <%=submit_tag 'Get it!'%>
+    <br />
+    *Exemplu: <i>http://www.trilulilu.ro/dobrogean/9a6d38a7601269</i>
+    </p>
+    <p><%=link_to 'See download history', :action => 'history'%></p>
+<%end%>

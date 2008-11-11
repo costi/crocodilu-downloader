@@ -1,0 +1,22 @@
+<h2>Trilulilu leech history</h2>
+<%= link_to 'Home', :action => 'index' %> --&gt; history
+
+<table>
+    <tr><th>Name</th><th>Size(k)</th><th>Downloaded(k)</th><th>Leeched on</th><th>Trilu User</th><th>id</th></tr>
+    <%for tril in @trils%>
+    <tr>
+        <td>
+	    <a href="<%="http://www.trilulilu.ro/#{h tril.trilu_user}/#{h tril.trilu_file_id}"%>">
+            <img border="0" src="/icons/sound1.gif" width="20" height="22" alt="Listen tril" /></a>
+	    <%=h tril.name%>	    
+	</td>
+        <td><%=h tril.byte_size/1000%></td>
+	<td><%= File.exists?(tril.local_file_path) ? File.size(tril.local_file_path)/1000 : "N/A"%></td>
+        <td><%=h tril.created_on.strftime('%Y-%m-%d')%></td>
+        <td><a href="http://www.trilulilu.ro/<%=h tril.trilu_user%>"><%=h tril.trilu_user%></a></td>
+	<td><%=tril.id%></td>
+    </tr>
+    <%end%>
+</table>
+<%= pagination_links @pages %>        
+
